@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio & Lucía - Nuestra Boda</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #fce4ec);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(160, 60, 120, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        section {
+            padding: 2rem;
+            max-width: 700px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #388e3c;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        input, textarea, select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            margin-top: 1.5rem;
+            background-color: #a03c78;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8a3367;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 2rem 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Nos casamos!</h1>
+        <h2>Sergio & Lucía</h2>
+        <p>22 de noviembre de 2025</p>
+    </header>
+    <section>
+        <div style="text-align:center; margin-bottom: 2rem;">
+            <h2>Faltan...</h2>
+            <div id="countdown" style="font-size: 2rem; font-weight: bold; color: #a03c78;"></div>
+        </div>
+        <h2>Ceremonia</h2>
+    <p><a href="https://www.google.com/maps/place/Iglesia+San+Esteban+Protom%C3%A1rtir,+28594+Albares,+Madrid" 
+          target="_blank" style="color:#a03c78; text-decoration: underline;">
+          📍 Ver Iglesia en Google Maps</a></p>
+        <p><strong>Lugar:</strong> Iglesia San Esteban Protomártir, Albares</p>
+        <p><strong>Hora:</strong> 13:00 h</p>
+
+        <h2>Convite</h2>
+    <p><a href="https://www.google.com/maps/place/Palacete+de+la+Ochava,+Valdilecha" 
+          target="_blank" style="color:#a03c78; text-decoration: underline;">
+          📍 Ver Palacete de la Ochava en Google Maps</a></p>
+        <p><strong>Lugar:</strong> Palacete de la Ochava, Valdilecha</p>
+        <p><strong>Cóctel:</strong> 16:00 h</p>
+        <p>🛏️ El alojamiento está incluido en el Palacete para los invitados. Si vas a quedarte a dormir, debes confirmar tu asistencia.</p>
+
+        <h2>Confirmar Asistencia</h2>
+        <form action="https://formspree.io/f/xgegrjra" method="POST">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" name="nombre" required>
+
+            <label for="asistencia">¿Asistirás?</label>
+            <select name="asistencia" required>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="alojamiento">¿Te quedarás a dormir en el Palacete?</label>
+            <select name="alojamiento" required>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="alergias">¿Tienes alguna alergia o restricción alimentaria?</label>
+            <textarea name="alergias" rows="2"></textarea>
+
+            <label for="comentarios">Comentarios adicionales</label>
+            <textarea name="comentarios" rows="3"></textarea>
+
+            <button type="submit">Enviar confirmación</button>
+        </form>
+    </section>
+    <footer>
+        Sergio & Lucía - Boda 2025 💚🌸
+    </footer>
+
+    <script>
+        const countdown = document.getElementById("countdown");
+        const weddingDate = new Date("2025-11-22T13:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `${days} días, ${hours} h, ${minutes} min, ${seconds} s`;
+
+            if (distance < 0) {
+                countdown.innerHTML = "¡Ya es el gran día!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+    </body>
+    
+</html>
